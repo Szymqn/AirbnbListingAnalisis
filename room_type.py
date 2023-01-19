@@ -13,10 +13,11 @@ def load():
         converters={'room_type': str.lower},
         usecols=['room_type'],
     )
-    analize(source=df)
 
+    analyze(source=df)
 
-def analize(source):
+    
+def analyze(source):
     data = source.value_counts()
     keys = []
 
