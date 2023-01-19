@@ -19,16 +19,12 @@ def load():
     
 def analyze(source):
     data = source.value_counts()
-    keys = []
 
     data_dict = data.to_dict()
-    t_keys = data_dict.keys()
-
-    # Convert and add keys to list of keys
-    for key in t_keys:
-        keys.append(*key)
 
     values = data_dict.values()
+    keys = list(map(str, data_dict.keys()))
+    keys = [key[2:-3] for key in keys]  # remove brackets and comma
 
     fig, ax = plt.subplots()
 
