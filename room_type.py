@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as mtick
 
 
-def load():
+def load_room_type():
     HERE = Path(__file__).parent
     DATA_FOLDER = HERE / "data"
 
