@@ -22,15 +22,17 @@ def analyze(source):
 
     data_dict = data.to_dict()
 
-    values = data_dict.values()
     keys = list(map(str, data_dict.keys()))
     keys = [key[2:-3] for key in keys]  # remove brackets and comma
 
     fig, ax = plt.subplots()
 
-    ax.bar(keys, values)
     ax.set_title('Room types')
 
-    plt.gca().yaxis.set_major_formatter(mtick.PercentFormatter(xmax=max(values)))
+    values = data / data.sum() * 100
+    ax.bar(keys, data_dict.values())
+
+    for i, v in enumerate(values):
+        plt.text(i - 0.2, v+50, str(round(v, 2)) + "%", color='black', fontweight='bold')
 
     plt.show()
