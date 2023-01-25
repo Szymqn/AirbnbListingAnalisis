@@ -44,7 +44,6 @@ def analyze(source):
                     if high <= int(key[:-1]) <= low:
                         status.append(label)
                         num_of_each[label] = num_of_each.get(label, 0) + values[idx]
-                        print(idx)
                         idx += 1
                         break
 
