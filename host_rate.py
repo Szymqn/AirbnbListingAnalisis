@@ -1,6 +1,7 @@
 from pathlib import Path
 import matplotlib.pyplot as plt
 import pandas as pd
+import numpy as np
 
 
 def load_host_rate():
@@ -48,12 +49,12 @@ def analyze(source):
                         idx += 1
                         break
 
-    print(num_of_each)
-
     labels = num_of_each.keys()
     sizes = num_of_each.values()
+    max_value = np.argmax(sizes)
 
-    explode = (0, 0, 0, 0, 0)
+    explode = [0 for _ in range(len(sizes))]
+    explode[max_value] = 0.1
 
     fig, ax = plt.subplots()
     ax.pie(sizes, labels=labels, explode=explode, autopct='%1.1f%%', shadow=True)
