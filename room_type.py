@@ -24,14 +24,17 @@ def analyze(source):
     keys = list(map(str, data_dict.keys()))
     keys = [key[2:-3] for key in keys]  # remove brackets and comma
 
+    values = list(data_dict.values())
+
     fig, ax = plt.subplots()
 
     ax.set_title('Room types', fontweight='bold')
 
-    values = data / data.sum() * 100
+    percentage = data / data.sum() * 100
     ax.bar(keys, data_dict.values())
 
-    for i, v in enumerate(values):
+    for i, v in enumerate(percentage):
         plt.text(i - 0.2, v+50, str(round(v, 2)) + "%", color='black', fontweight='bold')
+        plt.text(i - 0.15, 4250, str(values[i]), color='black', fontweight='black')
 
     plt.show()
