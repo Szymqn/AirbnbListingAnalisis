@@ -8,16 +8,24 @@ def load_host_rate():
     HERE = Path(__file__).parent
     DATA_FOLDER = HERE / "data"
 
-    df = pd.read_csv(
+    acceptance = pd.read_csv(
         DATA_FOLDER / "listings.csv",
         converters={'host_acceptance_rate': str},
         usecols=['host_acceptance_rate'],
     )
 
-    analyze(source=df)
+    analyze(source=acceptance, title='Host acceptance rate')
+
+    response = pd.read_csv(
+        DATA_FOLDER / "listings.csv",
+        converters={'host_response_rate': str},
+        usecols=['host_response_rate'],
+    )
+
+    analyze(source=response, title='Host response rate')
 
 
-def analyze(source):
+def analyze(source, title):
     data = source.value_counts()
 
     data_dict = data.to_dict()
@@ -58,8 +66,8 @@ def analyze(source):
     explode[max_value] = 0.1
 
     fig, ax = plt.subplots()
-    ax.set_title('Host acceptance rate', fontweight='bold')
-    ax.pie(sizes, labels=labels, explode=explode, autopct='%1.1f%%', shadow=True)
+    ax.set_title(title, fontweight='bold')
+    ax.pie(sizes, labels=labels, explode=explode, autopct='%1.1f%%', pctdistance=0.5, shadow=True)
     ax.axis('equal')
 
     plt.show()
