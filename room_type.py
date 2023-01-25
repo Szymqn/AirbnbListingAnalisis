@@ -26,7 +26,7 @@ def analyze(source):
 
     fig, ax = plt.subplots()
 
-    ax.set_title('Room types')
+    ax.set_title('Room types', fontweight='bold')
 
     values = data / data.sum() * 100
     ax.bar(keys, data_dict.values())
