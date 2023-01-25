@@ -58,7 +58,7 @@ def analyze(source):
     explode[max_value] = 0.1
 
     fig, ax = plt.subplots()
-    ax.set_title('Host acceptance rate')
+    ax.set_title('Host acceptance rate', fontweight='bold')
     ax.pie(sizes, labels=labels, explode=explode, autopct='%1.1f%%', shadow=True)
     ax.axis('equal')
 
