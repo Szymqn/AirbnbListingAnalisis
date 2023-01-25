@@ -32,7 +32,7 @@ def analyze(source):
               ('Below average', (60, 40)),
               ('Bad', (40, 0))]
 
-    num_of_each = {'Excellent': 0, 'Good': 0, 'Average': 0, 'Below average': 0, 'Bad': 0}
+    num_of_each = {'Excellent': 0, 'Good': 0, 'Average': 0, 'Below average': 0, 'Bad': 0, 'N/A': 0}
 
     status = []
 
@@ -41,6 +41,7 @@ def analyze(source):
         match key:
             case 'N/A':
                 status.append('N/A')
+                num_of_each['N/A'] = num_of_each.get('N/A', 0) + values[idx]
             case _:
                 for label, (low, high) in ranges:
                     if high <= int(key[:-1]) <= low:
@@ -57,6 +58,7 @@ def analyze(source):
     explode[max_value] = 0.1
 
     fig, ax = plt.subplots()
+    ax.set_title('Host acceptance rate')
     ax.pie(sizes, labels=labels, explode=explode, autopct='%1.1f%%', shadow=True)
     ax.axis('equal')
 
