@@ -1,5 +1,6 @@
 from pathlib import Path
 import pandas as pd
+from functools import reduce
 
 
 def load_host_rate():
@@ -22,4 +23,32 @@ def analyze(source):
 
     keys = list(map(str, data_dict.keys()))
     keys = [key[2:-3] for key in keys]
-    print(keys)
+
+    ranges = [('Excellent', (100, 90)),
+              ('Good', (90, 80)),
+              ('Average', (80, 60)),
+              ('Below average', (60, 40)),
+              ('Bad', (40, 0))]
+
+    status = []
+
+    for key in keys:
+        match key:
+            case 'N/A':
+                status.append('N/A')
+            case _:
+                for label, (low, high) in ranges:
+                    if high <= int(key[:-1]) <= low:
+                        status.append(label)
+                        break
+
+    list_of_dicts = [{k: v} for k, v in zip(status, data_dict.values())]
+
+    merged_dict = {}
+    for idx, d in enumerate(list_of_dicts):
+        for key, value in d.items():
+            if key in merged_dict:
+                key = key + f"_{idx}"
+            merged_dict[key] = value
+
+    print(merged_dict)
