@@ -1,4 +1,5 @@
 from pathlib import Path
+import matplotlib.pyplot as plt
 import pandas as pd
 
 
@@ -48,3 +49,14 @@ def analyze(source):
                         break
 
     print(num_of_each)
+
+    labels = num_of_each.keys()
+    sizes = num_of_each.values()
+
+    explode = (0, 0, 0, 0, 0)
+
+    fig, ax = plt.subplots()
+    ax.pie(sizes, labels=labels, explode=explode, autopct='%1.1f%%', shadow=True)
+    ax.axis('equal')
+
+    plt.show()
