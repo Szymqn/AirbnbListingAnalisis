@@ -8,24 +8,32 @@ def load_host_rate():
     HERE = Path(__file__).parent
     DATA_FOLDER = HERE / "data"
 
-    acceptance = pd.read_csv(
+    acceptance_rate = pd.read_csv(
         DATA_FOLDER / "listings.csv",
         converters={'host_acceptance_rate': str},
         usecols=['host_acceptance_rate'],
     )
 
-    analyze(source=acceptance, title='Host acceptance rate')
+    analyze_percentage(source=acceptance_rate, title='Host acceptance rate')
 
-    response = pd.read_csv(
+    response_rate = pd.read_csv(
         DATA_FOLDER / "listings.csv",
         converters={'host_response_rate': str},
         usecols=['host_response_rate'],
     )
 
-    analyze(source=response, title='Host response rate')
+    analyze_percentage(source=response_rate, title='Host response rate')
+
+    response_time = pd.read_csv(
+        DATA_FOLDER / "listing.csv",
+        converters={'host_response_time': str},
+        usecols=['host_response_time'],
+    )
+
+    analyze_str(source=response_time, title='Host response time')
 
 
-def analyze(source, title):
+def analyze_percentage(source, title):
     data = source.value_counts()
 
     data_dict = data.to_dict()
@@ -71,3 +79,7 @@ def analyze(source, title):
     ax.axis('equal')
 
     plt.show()
+
+
+def analyze_str(source, title):
+    pass
