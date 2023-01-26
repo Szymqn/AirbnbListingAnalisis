@@ -68,17 +68,17 @@ def analyze_percentage(source, title):
 
     labels = num_of_each.keys()
     sizes = num_of_each.values()
-    max_value = np.argmax(sizes)
+    max_value_arg = np.argmax(sizes)
 
     explode = [0 for _ in range(len(sizes))]
-    explode[max_value] = 0.1
+    explode[max_value_arg] = 0.1
 
     fig, ax = plt.subplots()
     ax.set_title(title, fontweight='bold')
     ax.pie(sizes, labels=labels, explode=explode, autopct='%1.1f%%', pctdistance=0.5, shadow=True)
     ax.axis('equal')
 
-    # plt.show()
+    plt.show()
 
 
 def analyze_str(source, title):
