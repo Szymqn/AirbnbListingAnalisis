@@ -89,3 +89,15 @@ def analyze_str(source, title):
 
     keys = list(map(str, data_dict.keys()))
     keys = [key[2:-3] for key in keys]
+
+    max_value_arg = np.argmax(values)
+
+    explode = [0 for _ in range(len(values))]
+    explode[max_value_arg] = 0.1
+
+    fig, ax = plt.subplots()
+    ax.set_title(title, fontweight='bold')
+    ax.pie(values, labels=keys, explode=explode, autopct='%1.1f%%', pctdistance=0.5, shadow=True)
+    ax.axis('equal')
+
+    plt.show()
