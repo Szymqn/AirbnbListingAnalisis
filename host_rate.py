@@ -25,7 +25,7 @@ def load_host_rate():
     analyze_percentage(source=response_rate, title='Host response rate')
 
     response_time = pd.read_csv(
-        DATA_FOLDER / "listing.csv",
+        DATA_FOLDER / "listings.csv",
         converters={'host_response_time': str},
         usecols=['host_response_time'],
     )
@@ -78,8 +78,9 @@ def analyze_percentage(source, title):
     ax.pie(sizes, labels=labels, explode=explode, autopct='%1.1f%%', pctdistance=0.5, shadow=True)
     ax.axis('equal')
 
-    plt.show()
+    # plt.show()
 
 
 def analyze_str(source, title):
-    pass
+    data = source.value_counts()
+    print(data)
