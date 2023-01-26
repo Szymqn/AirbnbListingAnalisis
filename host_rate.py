@@ -83,4 +83,9 @@ def analyze_percentage(source, title):
 
 def analyze_str(source, title):
     data = source.value_counts()
-    print(data)
+
+    data_dict = data.to_dict()
+    values = list(data_dict.values())
+
+    keys = list(map(str, data_dict.keys()))
+    keys = [key[2:-3] for key in keys]
