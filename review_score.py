@@ -70,3 +70,14 @@ def analyze_place(source, place_id):
     values = values.to_dict()
     values = list(*values.keys())
     values.pop(0)
+
+    fig, ax = plt.subplots()
+
+    ax.set_title(f'Reviews of {place_id} place id')
+    ax.bar(keys, values)
+
+    for i, v in enumerate(values):
+        plt.text(i - 0.2, v, str(round(v, 2)) + "*", color='black')
+
+    plt.xticks(rotation=11, fontsize=8)
+    plt.show()
