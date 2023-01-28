@@ -18,7 +18,22 @@ def load_review_score():
                  'review_scores_value'],
     )
 
+    df_p = pd.read_csv(
+        DATA_FOLDER / "listings.csv",
+        converters={'id': int},
+        usecols=['id',
+                 'review_scores_rating',
+                 'review_scores_accuracy',
+                 'review_scores_cleanliness',
+                 'review_scores_checkin',
+                 'review_scores_communication',
+                 'review_scores_location',
+                 'review_scores_value'],
+    )
+
     analyze_overview(source=df)
+
+    analyze_place(source=df_p, place_id=42932)
 
 
 def analyze_overview(source):
@@ -42,3 +57,16 @@ def analyze_overview(source):
 
     plt.xticks(rotation=11, fontsize=8)
     plt.show()
+
+
+def analyze_place(source, place_id):
+    data_values = source.loc[source['id'] == place_id]
+
+    keys = list(data_values.keys().delete(0))
+
+    keys = [key.replace('_', ' ') for key in keys]
+
+    values = data_values.value_counts()
+    values = values.to_dict()
+    values = list(*values.keys())
+    values.pop(0)
