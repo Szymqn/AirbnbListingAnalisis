@@ -35,5 +35,8 @@ def analyze_float(source):
     ax.set_title('Reviews overview')
     ax.bar(labels, avg)
 
+    for i, v in enumerate(avg):
+        plt.text(i-0.2, v, str(round(v, 2)) + "*", color='black')
+
     plt.xticks(rotation=11, fontsize=8)
     plt.show()
