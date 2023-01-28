@@ -1,4 +1,5 @@
 from pathlib import Path
+import matplotlib.pyplot as plt
 import pandas as pd
 
 
@@ -28,3 +29,11 @@ def analyze_float(source):
 
     for col in labels:
         avg.append(source[col].mean())
+
+    fig, ax = plt.subplots()
+
+    ax.set_title('Reviews overview')
+    ax.bar(labels, avg)
+
+    plt.xticks(rotation=11, fontsize=8)
+    plt.show()
