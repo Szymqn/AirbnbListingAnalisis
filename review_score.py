@@ -45,7 +45,7 @@ def analyze_overview(source):
     for col in labels:
         avg.append(source[col].mean())
 
-    labels = [label.replace('_', ' ') for label in labels]
+    labels = [label.replace('review_scores_', ' ') for label in labels]
 
     fig, ax = plt.subplots()
 
@@ -64,7 +64,7 @@ def analyze_place(source, place_id):
 
     keys = list(data_values.keys().delete(0))
 
-    keys = [key.replace('_', ' ') for key in keys]
+    keys = [key.replace('review_scores_', '') for key in keys]
 
     values = data_values.value_counts()
     values = values.to_dict()
