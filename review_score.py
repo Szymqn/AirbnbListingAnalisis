@@ -18,10 +18,10 @@ def load_review_score():
                  'review_scores_value'],
     )
 
-    analyze_float(source=df)
+    analyze_overview(source=df)
 
 
-def analyze_float(source):
+def analyze_overview(source):
     data = source.value_counts()
     labels = data.keys().names
 
