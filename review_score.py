@@ -30,6 +30,8 @@ def analyze_overview(source):
     for col in labels:
         avg.append(source[col].mean())
 
+    labels = [label.replace('_', ' ') for label in labels]
+
     fig, ax = plt.subplots()
 
     ax.set_title('Reviews overview')
