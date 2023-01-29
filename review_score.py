@@ -67,8 +67,7 @@ def analyze_place(source, place_id):
     keys = [key.replace('review_scores_', '') for key in keys]
 
     values = data_values.value_counts()
-    values = values.to_dict()
-    values = list(*values.keys())
+    values = list(*values.keys().values)
     values.pop(0)
 
     fig, ax = plt.subplots()
