@@ -61,14 +61,14 @@ def analyze_overview(source):
 
 def analyze_place(source, place_id):
     data_values = source.query(f'id == {place_id}')
+    data_values = data_values.drop(columns=[data_values.columns[0]], axis=1)
 
-    keys = list(data_values.keys().delete(0))
+    keys = list(data_values.keys())
 
     keys = [key.replace('review_scores_', '') for key in keys]
 
     values = data_values.value_counts()
     values = list(*values.keys().values)
-    values.pop(0)
 
     fig, ax = plt.subplots()
 
