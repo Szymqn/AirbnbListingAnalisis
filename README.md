@@ -32,4 +32,5 @@ More plots soon
 This program provides an overview of the statistical information about Airbnb listings and demonstrates the use of Pandas, Matplotlib, and Pathlib libraries in Python.
 
 **Data license**  
+
 Attribution 4.0 International (CC BY 4.0)
