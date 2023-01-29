@@ -60,7 +60,7 @@ def analyze_overview(source):
 
 
 def analyze_place(source, place_id):
-    data_values = source.loc[source['id'] == place_id]
+    data_values = source.query(f'id == {place_id}')
 
     keys = list(data_values.keys().delete(0))
 
