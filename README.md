@@ -2,7 +2,7 @@
 
 **Introduction**
 
-This documentation describes a Python program that provides statistical information about Airbnb listings. The program uses the Pandas, Matplotlib and Pathlib libraries to read a CSV file containing Airbnb data and generate various visualizations and statistics.
+This is program that provides statistical information about Airbnb listings. The program uses mainly the Pandas, Matplotlib and Pathlib libraries to read a CSV file containing Airbnb data and generate various visualizations and statistics.
 
 **Prerequisites**
 
