@@ -7,4 +7,3 @@ if __name__ == '__main__':
     load_room_type()
     load_host_rate()
     load_review_score()
-    
